@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet" />
     <title>B1 ESGI - Javascript</title>
 </head>
 <body>
-    <h1 id="titre">Projets</h1>
-    <p>Je suis disponible à l'url : http://127.0.0.1:5500/Projets/index.html</p>
+    <h1 id="titre">Calculatrice JS</h1>
+    <div class="container">
+        <input class="affiche-resultat"  disabled  id="result">
+        <form action="" method="get" class="form-calculate">
+            Premier nombre <input type="number" name="a" id="a"><br><br>
+            Second nombre <input type="number" name="b" id="b"><br>
 
-
+            <button type ="button" id ="add" class="button-operator">+</button>
+            <button type ="button" id ="minus" class="button-operator">-</button>
+            <button type ="button" id ="multipliate" class="button-operator">x</button>
+            <button type ="button" id ="divise" class="button-operator">/</button>
+            <button type ="submit" id ="reset" class="button-reset">AC</button>
+        </form>
+    </div>
     <script src="index.js"></script>
 </body>
 </html>

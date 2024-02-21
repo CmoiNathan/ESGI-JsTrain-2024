@@ -61,3 +61,52 @@ h1 {
     text-align: center;
     height: 8vh;
 }
+
+table {
+    border-collapse: collapse; 
+    width: 100%; 
+}
+
+td {
+    font-family: sans-serif;
+    text-align: center;
+    padding: 5px;
+}
+
+.shopping-container,
+.cart-container {
+    border: solid;
+    border-radius: 30px;
+    width: 40%;
+    margin: auto; 
+    padding: 20px;
+}
+
+.fruit-button{
+    background-color: rgb(125, 125, 125);
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reset-button{
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.shopping-cart-wrapper {
+    display: flex;
+    margin-top: 10vh;
+}
+
+.fruits-list {
+    font-family: sans-serif;
+}

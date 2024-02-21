@@ -87,3 +87,9 @@ document.getElementById("monBouton").addEventListener("click", function () {
 ```
 Ici "function()" est un callback qui est une fonction qui est passé en paramètre dans une autre fonction
 
+## Tableau
+exemple :
+```js
+let fruits = ["pomme","banane","cerise"];
+```
+

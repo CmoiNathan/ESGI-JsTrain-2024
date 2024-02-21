@@ -1,26 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles.css" rel="stylesheet" />
-    <title>B1 ESGI - Javascript</title>
-</head>
-<body>
-    <h1 id="titre">Calculatrice JS</h1>
-    <div class="container">
-        <input class="affiche-resultat"  disabled  id="result">
-        <form action="" method="get" class="form-calculate">
-            Premier nombre <input type="number" name="a" id="a"><br><br>
-            Second nombre <input type="number" name="b" id="b"><br>
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles.css" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/254741f17f.js" crossorigin="anonymous"></script>
+        <title>B1 ESGI - Javascript</title>
+    </head>
+    <body>
+        <h1 id="titre">Calculatrice JS</h1>
+        <div class="container">
+            <input class="affiche-resultat"  disabled  id="result">
+            <form action="" method="get" class="form-calculate">
+                Premier nombre <input type="number" name="a" id="a"><br><br>
+                Second nombre <input type="number" name="b" id="b"><br>
 
-            <button type ="button" id ="add" class="button-operator">+</button>
-            <button type ="button" id ="minus" class="button-operator">-</button>
-            <button type ="button" id ="multipliate" class="button-operator">x</button>
-            <button type ="button" id ="divise" class="button-operator">/</button>
-            <button type ="submit" id ="reset" class="button-reset">AC</button>
-        </form>
-    </div>
-    <script src="index.js"></script>
-</body>
-</html>
+                <button type ="button" id ="add" class="button-operator">+</button>
+                <button type ="button" id ="minus" class="button-operator">-</button>
+                <button type ="button" id ="multipliate" class="button-operator">x</button>
+                <button type ="button" id ="divise" class="button-operator">/</button>
+                <button type ="submit" id ="reset" class="button-reset">AC</button>
+            </form>
+        </div><br><br><br>
+
+        <h1>Shopping List Simulator</h1>
+        <div class="shopping-cart-wrapper">
+            <div class="shopping-container">
+                <h1>Shopping List</h1>
+                <table>
+                    <tr>
+                        <td>Ananas</td>
+                        <td>Avocat</td>
+                        <td>Cassis</td>
+                        <td>Banane</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="addAnanas" class="fruit-button">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+                        </td>
+                        <td>
+                            <button id="addAvocat" class="fruit-button">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+                        </td>
+                        <td>
+                            <button id="addCassis" class="fruit-button">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+                        </td>
+                        <td>
+                            <button id="addBanane" class="fruit-button">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pomme</td>
+                        <td>Fraise</td>
+                        <td>Kiwi</td>
+                        <td>Orange</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="addPomme" class="fruit-button">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+                        </td>
+                        <td>
+                            <button id="addFraise" class="fruit-button">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+                        </td>
+                        <td>
+                            <button id="addKiwi" class="fruit-button">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+                        </td>
+                        <td>
+                            <button id="addOrange" class="fruit-button">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Poire</td>
+                        <td>Raisin</td>
+                        <td>Mangue</td>
+                        <td>Pêche</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="addPoire" class="fruit-button">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+                        </td>
+                        <td>
+                            <button id="addRaisin" class="fruit-button">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+                        </td>
+                        <td>
+                            <button id="addMangue" class="fruit-button">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+                        </td>
+                        <td>
+                            <button id="addPeche" class="fruit-button">Ajouter au panier <i class="fa-solid fa-cart-shopping"></i></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="cart-container">
+                <h1>Cart</h1>
+                <table id="cart-table">
+                </table>
+                <button id="clear" class="reset-button">Vider le panier <i class="fa-solid fa-trash"></i>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+    </html>

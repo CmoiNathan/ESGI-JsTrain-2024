@@ -82,6 +82,10 @@ td {
     padding: 20px;
 }
 
+.img-fruit {
+    width: 150px;
+    height: 150px;
+}
 .fruit-button{
     background-color: rgb(125, 125, 125);
     color: white;

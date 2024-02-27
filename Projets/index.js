@@ -46,14 +46,14 @@ let prixMangue = 3.99;
 let prixPeche = 5.49;
 let prixTotal = 0;
 
-    const fruitAnanas = document.getElementById("addAnanas");
-    fruitAnanas.addEventListener("click",function(){
-        let newRow = fruitTab.insertRow();
-        let newCell = newRow.insertCell();
-        newCell.innerHTML = "Ananas";
-        prixTotal += prixAnanas
-        document.getElementById("Total").innerHTML = "Total : " + prixTotal.toFixed(2) + "€"
-    });
+const fruitAnanas = document.getElementById("addAnanas");
+fruitAnanas.addEventListener("click",function(){
+    let newRow = fruitTab.insertRow();
+    let newCell = newRow.insertCell();
+    newCell.innerHTML = "Ananas";
+    prixTotal += prixAnanas
+    document.getElementById("Total").innerHTML = "Total : " + prixTotal.toFixed(2) + "€"
+});
 
 const fruitAvocat = document.getElementById("addAvocat");
 fruitAvocat.addEventListener("click",function(){

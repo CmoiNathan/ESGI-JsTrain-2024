@@ -174,28 +174,39 @@ let promesse = new Promise((resolve,reject) => {
 });
 
 
+//Initie  les clés pour l'API
 const apiKey = "161593092f55fb2916220135c80b74e9";
 const cityId = "2996944";
 
 function fetchWeather(cityId, apiKey) {
+
+    //retour de l'appel de la fonction fetch
     fetch(`http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`)
+
+         //Tente de résoudre la promesse avec then, et reçoit la promesse
         .then(response => response.json())
         .then(data => {
+
+            //Déclaration des variables
             let ville = "Données non disponibles";
-            let temp = "Données non disponibles";
+            let temps = "Données non disponibles";
             let meteo = "Données non disponibles";
             let pays = "Données non disponibles"
             
+            //Affectation des valeurs au variables
             ville = data.name;
-            temp = data.main.temp;
+            temps = data.main.temp;
             meteo = data.weather[0].description;
             pays = data.sys.country;
             
+            //Affichage des valeurs sur notre page web au bon endroit
             document.getElementById("city").innerHTML = ville;
-            document.getElementById("temp").innerHTML = temp;
+            document.getElementById("temp").innerHTML = temps;
             document.getElementById("temperature_min").innerHTML = meteo;
             document.getElementById("country").innerHTML = pays;
         })
+        
+        //Si erreur 
         .catch(error => {
             console.log('Erreur', error);
         });
@@ -203,6 +214,7 @@ function fetchWeather(cityId, apiKey) {
 
 fetchWeather(cityId, apiKey);
 
+//Actualise toutes les secondes les inforamtions de la fonction
 setInterval(function() {
     fetchWeather(cityId, apiKey);
 }, 1000); 

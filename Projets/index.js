@@ -160,3 +160,52 @@ clearButton.addEventListener("click", function(){
     document.getElementById('Total').innerHTML = "";
     prixTotal = 0;
 });
+
+
+
+
+let promesse = new Promise((resolve,reject) => {
+  let condition = true;
+  if (condition) {
+    setTimeout(() => resolve("Opération réussie"), 1000);
+  } else {
+    reject ("Opération échouée");
+  }
+});
+
+
+const apiKey = "161593092f55fb2916220135c80b74e9";
+const cityId = "2996944";
+
+function fetchWeather(cityId, apiKey) {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            let ville = "Données non disponibles";
+            let temp = "Données non disponibles";
+            let meteo = "Données non disponibles";
+            let pays = "Données non disponibles"
+            
+            ville = data.name;
+            temp = data.main.temp;
+            meteo = data.weather[0].description;
+            pays = data.sys.country;
+            
+            document.getElementById("city").innerHTML = ville;
+            document.getElementById("temp").innerHTML = temp;
+            document.getElementById("temperature_min").innerHTML = meteo;
+            document.getElementById("country").innerHTML = pays;
+        })
+        .catch(error => {
+            console.log('Erreur', error);
+        });
+}
+
+fetchWeather(cityId, apiKey);
+
+setInterval(function() {
+    fetchWeather(cityId, apiKey);
+}, 1000); 
+
+
+

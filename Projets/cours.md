@@ -93,3 +93,15 @@ exemple :
 let fruits = ["pomme","banane","cerise"];
 ```
 
+### Promesses
+
+```javascript
+let promesse = new Promise((resolve,reject) => {
+  let condition = true;
+  if (condition) {
+    setTimeout(() => resolve("Opération réussie"), 1000);
+  } else {
+    reject ("Opération échouée");
+  }
+});
+```

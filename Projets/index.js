@@ -177,7 +177,7 @@ let promesse = new Promise((resolve,reject) => {
 //Initie  les clés pour l'API
 const apiKey = "161593092f55fb2916220135c80b74e9";
 const cityId = "2996944";
-
+                
 function fetchWeather(cityId, apiKey) {
 
     //retour de l'appel de la fonction fetch
@@ -193,7 +193,7 @@ function fetchWeather(cityId, apiKey) {
             let meteo = "Données non disponibles";
             let pays = "Données non disponibles"
             
-            //Affectation des valeurs au variables
+            //Affectation des valeurs au variables, /!\ chaque valeurs dépends de son API
             ville = data.name;
             temps = data.main.temp;
             meteo = data.weather[0].description;
@@ -205,19 +205,62 @@ function fetchWeather(cityId, apiKey) {
             document.getElementById("temperature_min").innerHTML = meteo;
             document.getElementById("country").innerHTML = pays;
         })
-        
+
         //Si erreur 
         .catch(error => {
             console.log('Erreur', error);
         });
 }
 
-fetchWeather(cityId, apiKey);
 
 //Actualise toutes les secondes les inforamtions de la fonction
 setInterval(function() {
     fetchWeather(cityId, apiKey);
 }, 1000); 
 
+const swTab = document.getElementById("swFilms");
 
+fetch('https://swapi.dev/api/films/')
+.then(response => response.json())
+.then(film => {
+    const filmsHope = film.results.find(film => 
+        film.title === "A New Hope");
+    const NewHoppeButton = document.getElementById("newhope");
+    NewHoppeButton.addEventListener("click", function(){
+        let newRow = swTab.insertRow();
+        let newCell = newRow.insertCell();
+        newCell.textContent = `Title: ${filmsHope.title}, Director: ${filmsHope.director}, Release Date: ${filmsHope.release_date}`;
 
+    const filmsEmpire = film.results.find(film => 
+        film.title === "The Empire Strikes Back");
+    const EmpireButton = document.getElementById("EmpireStrike");
+    EmpireButton.addEventListener("click", function(){
+        let newRow = swTab.insertRow();
+        let newCell = newRow.insertCell();
+        newCell.textContent = `Title: ${filmsEmpire.title}, Director: ${filmsEmpire.director}, Release Date: ${filmsEmpire.release_date}`;
+    
+    });
+
+    const filmsReturn = film.results.find(film => 
+        film.title === "Return of the Jedi");
+    const ReturnButton = document.getElementById("ReturnJedi");
+    ReturnButton.addEventListener("click", function(){
+        let newRow = swTab.insertRow();
+        let newCell = newRow.insertCell();
+        newCell.textContent = `Title: ${filmsReturn.title}, Director: ${filmsReturn.director}, Release Date: ${filmsReturn.release_date}`;
+    
+        });
+        
+    const filmsPhantom = film.results.find(film => 
+        film.title === "The Phantom Menace");
+    const PhatomButton = document.getElementById("ReturnJedi");
+    PhatomButton.addEventListener("click", function(){
+        let newRow = swTab.insertRow();
+        let newCell = newRow.insertCell();
+        newCell.textContent = `Title: ${filmsPhantom.title}, Director: ${filmsPhantom.director}, Release Date: ${filmsPhantom.release_date}`;
+    
+        });
+    });
+});
+
+ 

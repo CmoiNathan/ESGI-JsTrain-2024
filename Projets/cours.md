@@ -95,6 +95,8 @@ let fruits = ["pomme","banane","cerise"];
 
 ### Promesses
 
+Les promesses en JS sont utilisées pour gérer des opérations asynchrones. C'est un objet représentant l'achèvement éventuel (ou l'échec) d'une opération asynchrone.
+
 ```javascript
 let promesse = new Promise((resolve,reject) => {
   let condition = true;
@@ -104,4 +106,30 @@ let promesse = new Promise((resolve,reject) => {
     reject ("Opération échouée");
   }
 });
+```
+
+### JSON
+
+Json = Javascript object notation
+Pas de commentaire en Json et commence par un '{' et finit par un '}'
+
+Convertir un objet JS en JSON :
+
+```js
+const objet = {
+  nom : "Dupont",
+  age = 30,
+};
+
+const chaineJSON = JSON.stringify(objet);
+console.log(chaineJSON); // -> '{"nom":"Dupont","age":30}'
+```
+Convertir une chaine JSON en Js :
+
+```js
+const chaineJSON = '{"nom":"Dupont","age":30}';
+const objet = JSON.parse(chaineJSON);
+
+console.log(objet.nom); // -> "Dupont"
+console.log(objet.age); // -> "30"
 ```

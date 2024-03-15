@@ -127,3 +127,23 @@ td {
     padding-top: 5vh;
     padding-bottom: 5vh;
 }
+
+.film-details {
+    background-color: #f9f9f9;  
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(188, 23, 23, 0.1);
+}
+
+.film-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.detail {
+    font-size: 16px;
+    color: #531313;
+    margin-bottom: 5px;
+}
+

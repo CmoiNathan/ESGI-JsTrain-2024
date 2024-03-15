@@ -218,49 +218,74 @@ setInterval(function() {
     fetchWeather(cityId, apiKey);
 }, 1000); 
 
-const swTab = document.getElementById("swFilms");
 
-fetch('https://swapi.dev/api/films/')
-.then(response => response.json())
-.then(film => {
-    const filmsHope = film.results.find(film => 
-        film.title === "A New Hope");
-    const NewHoppeButton = document.getElementById("newhope");
-    NewHoppeButton.addEventListener("click", function(){
-        let newRow = swTab.insertRow();
-        let newCell = newRow.insertCell();
-        newCell.textContent = `Title: ${filmsHope.title}, Director: ${filmsHope.director}, Release Date: ${filmsHope.release_date}`;
 
-    const filmsEmpire = film.results.find(film => 
-        film.title === "The Empire Strikes Back");
-    const EmpireButton = document.getElementById("EmpireStrike");
-    EmpireButton.addEventListener("click", function(){
-        let newRow = swTab.insertRow();
-        let newCell = newRow.insertCell();
-        newCell.textContent = `Title: ${filmsEmpire.title}, Director: ${filmsEmpire.director}, Release Date: ${filmsEmpire.release_date}`;
-    
-    });
 
-    const filmsReturn = film.results.find(film => 
-        film.title === "Return of the Jedi");
-    const ReturnButton = document.getElementById("ReturnJedi");
-    ReturnButton.addEventListener("click", function(){
-        let newRow = swTab.insertRow();
-        let newCell = newRow.insertCell();
-        newCell.textContent = `Title: ${filmsReturn.title}, Director: ${filmsReturn.director}, Release Date: ${filmsReturn.release_date}`;
-    
-        });
-        
-    const filmsPhantom = film.results.find(film => 
-        film.title === "The Phantom Menace");
-    const PhatomButton = document.getElementById("ReturnJedi");
-    PhatomButton.addEventListener("click", function(){
-        let newRow = swTab.insertRow();
-        let newCell = newRow.insertCell();
-        newCell.textContent = `Title: ${filmsPhantom.title}, Director: ${filmsPhantom.director}, Release Date: ${filmsPhantom.release_date}`;
-    
-        });
-    });
+document.addEventListener("DOMContentLoaded", () => {
+    const ButtonSW = document.getElementById("SWbuttons");
+    const SummarySW = document.getElementById("SWsummary");
+
+    function SWbuttons() {
+        fetch("https://swapi.dev/api/films/")
+            .then(response => response.json())
+            .then(data => {
+                data.results.forEach(film => {
+                    const button = document.createElement("button");
+                    button.textContent = film.title;
+                    button.style.marginRight = "5px";
+                    button.addEventListener("click", () => SWdetails(film.url));
+                    ButtonSW.appendChild(button);
+                });
+            })
+            .catch(error =>
+                console.error("Erreur lors de la récupération des films :", error)
+            );
+    }
+
+    function SWdetails(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(film => {
+                SummarySW.innerHTML = `
+                <div class="film-details">
+                <h2 class="film-title">${film.title}</h2>
+                <div>
+                    <p class="detail"><strong>Date de sortie :</strong> ${film.release_date}</p>
+                    <p class="detail"><strong>Réalisateur :</strong> ${film.director}</p>
+                    <p class="detail"><strong>Producteurs :</strong> ${film.producer}</p>
+                </div>
+                <div class="summary">
+                    <p><strong>Résumé :</strong> ${film.opening_crawl}</p>
+                </div>
+                <div id="listCharacters"></div>
+            </div>`;
+      
+                SWcharacters(film.characters);
+            })
+            .catch(error =>
+                console.error("Erreur lors de la récupération des détails du film :", error)
+            );
+    }
+
+    SWbuttons(); 
 });
 
- 
+    function SWcharacters(url) {
+        url.forEach(url => {
+            fetch(url)
+                .then(response => response.json())
+                .then(SWcharacters => {
+                    document.getElementById('listCharacters').innerHTML += `
+                        <h2>${SWcharacters.name}</h2>
+                        <p><strong>Genre :</strong> ${SWcharacters.gender}</p>
+                        <p><strong>Année de naissance :</strong> ${SWcharacters.birth_year}</p>
+                        <p><strong>Couleurs des yeux :</strong> ${SWcharacters.eye_color}</p>
+                        <p><strong>Taille :</strong> ${SWcharacters.height} cm</p>
+                        <p><strong>Poids :</strong> ${SWcharacters.mass} kg</p>
+                        <hr>`;
+                })
+                .catch(error =>
+                    console.error("Erreur lors de la récupération des personnages du film :", error)
+                );
+        });
+    }
